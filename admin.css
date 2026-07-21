@@ -1,0 +1,123 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#eef2ff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+
+    width:900px;
+    background:#ffffff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.15);
+
+}
+
+h1{
+
+    text-align:center;
+    color:#1e293b;
+    margin-bottom:25px;
+
+}
+
+#showUsersBtn{
+
+    display:block;
+    margin:0 auto 30px;
+    padding:12px 28px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+#showUsersBtn:hover{
+
+    background:#1d4ed8;
+    transform:scale(1.05);
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+th{
+
+    background:#2563eb;
+    color:white;
+    padding:15px;
+    font-size:17px;
+
+}
+
+td{
+
+    text-align:center;
+    padding:15px;
+    border-bottom:1px solid #e5e7eb;
+    font-size:16px;
+
+}
+
+tr:hover{
+
+    background:#f8fafc;
+
+}
+
+.updateBtn{
+
+    background:#f59e0b;
+    color:white;
+    border:none;
+    padding:8px 18px;
+    border-radius:6px;
+    cursor:pointer;
+    margin-right:8px;
+    transition:0.3s;
+
+}
+
+.updateBtn:hover{
+
+    background:#d97706;
+
+}
+
+.deleteBtn{
+
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:8px 18px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+.deleteBtn:hover{
+
+    background:#dc2626;
+
+}
