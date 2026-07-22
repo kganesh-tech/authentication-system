@@ -32,6 +32,30 @@ showUsersBtn.addEventListener("click" , function()  {
                   <button class ="deleteBtn">Delete</button>
                   </td>`;
 
+                  const updateBtn =
+                  row.querySelector(".updateBtn");
+
+                  updateBtn.addEventListener("click", function ()  {
+                      window.location.href = `update.html?username=${user.username}`;
+
+                  });
+
+                  const deleteBtn =
+                   row.querySelector(".deleteBtn");
+
+                   deleteBtn.addEventListener("click", function () {
+                     fetch(`http://localhost:3000/users/${user.username}` , {
+                        method : "DELETE"
+
+                     })
+                     .then(res => res.json())
+                     .then(data => {
+                        alert(data.message);
+
+                        showUsersBtn.click();
+                     });
+                   });
+
                   tableBody.appendChild(row);
             });
 

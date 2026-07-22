@@ -51,6 +51,67 @@ app.get("/users" , (req, res) => {
 
 });
 
+app.put("/users", (req,res) => {
+    const oldUsername = req.body.oldUsername;
+    const newUsername = req.body.newUsername;
+    const newPassword = req.body.newPassword;
+
+fs.readFile("users.json" , "utf-8" , (err,data) => {
+    if(err) {
+        return res.status(400).json({
+            message : "unable to read the file"
+        });
+    }
+
+    let users = JSON.parse(data);
+
+    users.forEach(user => {
+        if(user.username === oldUsername) {
+            user.username = newUsername;
+            user.password = newPassword;
+        }
+    });
+    fs.writeFile("users.json" , JSON.stringify(users, null, 2), (err) => {
+        if(err) {
+            return res.status(500).json({
+                message: "unable to update user"
+            });
+        }
+        res.json({
+            message: "User updated successfully"
+        });
+    });
+});
+
+
+});
+
+app.delete("/users/:username", (req,res) => {
+    const username =
+        req.params.username;
+    
+      fs.readFile("users.json" , "utf-8" , (err,data) => {
+         if(err) {
+            return res.status(400).json({
+                message : "Unable to read a file"
+            });
+         }
+         let users = JSON.parse(data);
+         users = users.filter(user => user.username !== username);
+
+         fs.writeFile("users.json" , JSON.stringify(users , null , 2), (err) => {
+            if(err) {
+                return res.status(500).json ({
+                      message : "Error deleting user"
+                });
+            }
+            res.json({
+                message: "User deleted successfully"
+            });
+         });
+      });
+});
+
 app.listen(3000 , () => {
     console.log(`server is running on 3000`);
 });
