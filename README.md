@@ -10,6 +10,9 @@ AuthForge is a modern authentication and user management system built from scrat
  -DELETE User (DELETE)
  -Admin Dashboard
  -JSON-based data storage
+ -Password Hashing with bcrypt
+ -Secure Password Storage
+ -Restful API Architecture
  
 
 ## Tech Stack:
@@ -18,6 +21,7 @@ AuthForge is a modern authentication and user management system built from scrat
 -JavaScript
 -Node.js
 -Express.js
+-bcrypt
 
 ## Roadmap:
 -Update User(PUT)
@@ -45,6 +49,11 @@ Day 2
 - Learned JavaScript filter() for deleting users
 - improved Admin Dashboard functionality
 
+Day 3
+-Integrated bcrypt for passwords hashing
+-Password are securely stored instead of plain text
+-Improved authntication security
+
  ## Project Status
 
  - Version: v1.0
@@ -52,4 +61,5 @@ Day 2
  ## Progress :
  - CRUD Operations Completed
  - Authentication Module In Progress
+ - Password Hashing(bcrypt)
 
