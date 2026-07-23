@@ -50,9 +50,9 @@ Day 2
 - improved Admin Dashboard functionality
 
 Day 3
--Integrated bcrypt for passwords hashing
--Password are securely stored instead of plain text
--Improved authntication security
+- Integrated bcrypt for passwords hashing
+- Password are securely stored instead of plain text
+- Improved authentication security
 
  ## Project Status
 
