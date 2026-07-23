@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
+const bcrypt = require("bcrypt");
 
 const app = express();
 
@@ -11,17 +12,18 @@ app.post("/users" , (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    fs.readFile("users.json", "utf-8" , (err , data) => {
+    fs.readFile("users.json", "utf-8" , async (err , data) => {
         if(err) {
            return res.status(500).json({
                 message: "error in file reading"
             });
         }
         const users = JSON.parse(data);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         users.push ({
             username : username,
-            password : password 
+            password : hashedPassword 
         });
 
         fs.writeFile("users.json" , JSON.stringify(users , null , 2) , (err) => {
@@ -56,7 +58,7 @@ app.put("/users", (req,res) => {
     const newUsername = req.body.newUsername;
     const newPassword = req.body.newPassword;
 
-fs.readFile("users.json" , "utf-8" , (err,data) => {
+fs.readFile("users.json" , "utf-8" , async(err,data) => {
     if(err) {
         return res.status(400).json({
             message : "unable to read the file"
@@ -65,10 +67,12 @@ fs.readFile("users.json" , "utf-8" , (err,data) => {
 
     let users = JSON.parse(data);
 
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
     users.forEach(user => {
         if(user.username === oldUsername) {
             user.username = newUsername;
-            user.password = newPassword;
+            user.password = hashedPassword;
         }
     });
     fs.writeFile("users.json" , JSON.stringify(users, null, 2), (err) => {

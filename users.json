@@ -14,5 +14,9 @@
   {
     "username": "siddhartha",
     "password": "siddhartha123"
+  },
+  {
+    "username": "vinay",
+    "password": "$2b$10$VK2VrcwZhPPpYTW5oqWY9OM58H32XJYoVurAKykDK1JvHx1aDBRYm"
   }
 ]
